@@ -1,71 +1,627 @@
-<!-- Nepal Lakes Pages test -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lakes of Nepal | Discover the Himalayas</title>
+
+    <meta name="description"
+          content="Explore the beautiful lakes of Nepal, from the Himalayas to the Terai.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #071018;
+            font-family: "Inter", sans-serif;
+            background: #f5f8fa;
+            color: #102a43;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(8, 35, 52, 0.82);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
             color: white;
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #55d6be;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul a:hover {
+            color: #55d6be;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
-            font-family: Arial, sans-serif;
-            padding-top: 100px;
+            padding: 120px 20px 80px;
+
+            background:
+                linear-gradient(rgba(5, 25, 38, 0.55),
+                rgba(5, 25, 38, 0.72)),
+                url("https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+            background-position: center;
         }
 
-        h1 {
-            color: #58e6ff;
-            font-size: 50px;
+        .hero-content {
+            max-width: 850px;
+            color: white;
         }
 
-        p {
-            color: #9db1bd;
-            font-size: 20px;
+        .hero-content p:first-child {
+            color: #55d6be;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 92px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+            letter-spacing: -4px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin: auto;
+            color: #e4edf2;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #55d6be;
+            color: #062b35;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #062b35;
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: #159a8c;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            margin: 10px 0 15px;
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            color: #607d8b;
+            line-height: 1.7;
+        }
+
+        /* LAKE CARDS */
+
+        .lake-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .lake-card {
-            background-color: #102530;
-            padding: 20px;
-            border-radius: 24px;
-            max-width: 700px;
-            margin: 30px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(16, 42, 67, 0.08);
+            transition: 0.35s;
         }
 
-        .lake-card img {
+        .lake-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(16, 42, 67, 0.14);
+        }
+
+        .lake-image {
+            height: 230px;
             width: 100%;
-            border-radius: 12px;
+            object-fit: cover;
         }
 
-        button {
-            background-color: #58e6ff;
-            color: #071018;
-            border: none;
-            padding: 14px 25px;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
+        .lake-info {
+            padding: 24px;
+        }
+
+        .lake-location {
+            color: #159a8c;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lake-info h3 {
+            font-size: 25px;
+            margin: 8px 0;
+        }
+
+        .lake-info p {
+            color: #607d8b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .explore {
+            display: inline-block;
+            margin-top: 18px;
+            color: #159a8c;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* STATS */
+
+        .stats {
+            background: #092f3f;
+            color: white;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 45px;
+            color: #55d6be;
+        }
+
+        .stat p {
+            color: #b9ced6;
+            margin-top: 5px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .about-text h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .about-text p {
+            color: #607d8b;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #061f2b;
+            color: white;
+            padding: 45px 7%;
+            text-align: center;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #9bb1ba;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .lake-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Lakes of Nepal 🇳🇵</h1>
+    <!-- NAVIGATION -->
 
-    <p>Discover the beautiful lakes of Nepal 🏔️🌊</p>
+    <nav>
+        <a href="#" class="logo">Lakes<span>OfNepal</span></a>
 
-    <div class="lake-card">
+        <ul>
+            <li><a href="#lakes">Explore</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#facts">Facts</a></li>
+        </ul>
+    </nav>
 
-        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80"
-             alt="Mountain landscape">
 
-        <h2>Rara Lake</h2>
+    <!-- HERO -->
 
-        <p>Rara Lake is the largest lake in Nepal. 🏔️🌊</p>
+    <header class="hero">
 
-    </div>
+        <div class="hero-content">
 
-    <button>Click Me</button>
+            <p>Discover Nepal</p>
+
+            <h1>Lakes of Nepal</h1>
+
+            <p class="hero-description">
+                Explore the breathtaking lakes hidden among the Himalayas,
+                valleys and mountains of Nepal.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#lakes" class="btn btn-primary">
+                    Explore Lakes ↓
+                </a>
+
+                <a href="#about" class="btn btn-secondary">
+                    Discover More
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- LAKES -->
+
+    <section id="lakes">
+
+        <div class="section-heading">
+
+            <span>Explore</span>
+
+            <h2>Beautiful Lakes</h2>
+
+            <p>
+                From high-altitude Himalayan lakes to peaceful lakes
+                surrounded by forests and hills, Nepal is home to
+                incredible natural landscapes.
+            </p>
+
+        </div>
+
+
+        <div class="lake-grid">
+
+
+            <!-- RARA -->
+
+            <article class="lake-card">
+
+                <img
+                    class="lake-image"
+                    src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=85"
+                    alt="Rara Lake">
+
+                <div class="lake-info">
+
+                    <span class="lake-location">
+                        Mugu, Nepal
+                    </span>
+
+                    <h3>Rara Lake</h3>
+
+                    <p>
+                        Nepal's largest lake, surrounded by forests
+                        and beautiful Himalayan scenery.
+                    </p>
+
+                    <a class="explore" href="#">
+                        Explore Lake →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TILICHO -->
+
+            <article class="lake-card">
+
+                <img
+                    class="lake-image"
+                    src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85"
+                    alt="Tilicho Lake">
+
+                <div class="lake-info">
+
+                    <span class="lake-location">
+                        Manang, Nepal
+                    </span>
+
+                    <h3>Tilicho Lake</h3>
+
+                    <p>
+                        A spectacular high-altitude lake surrounded
+                        by the dramatic Annapurna Himalayas.
+                    </p>
+
+                    <a class="explore" href="#">
+                        Explore Lake →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PHEWA -->
+
+            <article class="lake-card">
+
+                <img
+                    class="lake-image"
+                    src="https://images.unsplash.com/photo-1591027348456-6a7c8e5d8a31?auto=format&fit=crop&w=1200&q=85"
+                    alt="Phewa Lake">
+
+                <div class="lake-info">
+
+                    <span class="lake-location">
+                        Pokhara, Nepal
+                    </span>
+
+                    <h3>Phewa Lake</h3>
+
+                    <p>
+                        A peaceful lake in Pokhara famous for its
+                        mountain reflections and lakeside views.
+                    </p>
+
+                    <a class="explore" href="#">
+                        Explore Lake →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FACTS -->
+
+    <section class="stats" id="facts">
+
+        <div class="stat">
+
+            <h3>5000+</h3>
+
+            <p>
+                Lakes across Nepal
+            </p>
+
+        </div>
+
+        <div class="stat">
+
+            <h3>8,000m+</h3>
+
+            <p>
+                Himalayan peaks
+            </p>
+
+        </div>
+
+        <div class="stat">
+
+            <h3>7</h3>
+
+            <p>
+                Provinces to explore
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <img
+                class="about-image"
+                src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1400&q=85"
+                alt="Himalayan landscape">
+
+            <div class="about-text">
+
+                <h2>Where mountains meet water.</h2>
+
+                <p>
+                    Nepal's lakes are scattered across some of the
+                    country's most spectacular landscapes.
+                </p>
+
+                <p>
+                    Some are surrounded by forests and hills, while
+                    others sit high in the Himalayas among snow-covered
+                    mountains.
+                </p>
+
+                <p>
+                    This website is a simple guide to discovering
+                    some of Nepal's most beautiful lakes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>Lakes of Nepal 🇳🇵</h2>
+
+        <p>
+            Discover. Explore. Respect nature.
+        </p>
+
+        <p style="margin-top:15px;">
+            © 2026 Lakes of Nepal
+        </p>
+
+    </footer>
 
 </body>
 </html>
